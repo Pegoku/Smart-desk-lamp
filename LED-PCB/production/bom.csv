@@ -1,0 +1,9 @@
+﻿Designator,Footprint,Quantity,Value,LCSC Part #
+"0_11, 0_10, 0_9, 0_7, 0_6, 0_5, 0_4, 0_2, 0",0805,9,R_0805_2012Metric_Pad1.20x1.40mm_HandSolder,
+"0_8, 0_3",0805,2,0,
+"D1, D2, D3, D4, D5, D6, D7, D8",LED_PLCC_2835,8,LEDW,
+"D10, D11, D12, D13, D14, D15, D16, D9",LED_PLCC_2835,8,LEDC,
+J1,JST_XH_B4B-XH-AM_1x04_P2.50mm_Vertical,1,Conn_01x04,
+"Q1, Q2",SOT-23,2,2N7002,
+"R1, R2, R3, R4",0603,4,9.1,
+"U1, U2, U3, U4",SOT-23-6_L2.9-W1.6-P0.95-LS2.8-BR,4,AL5802-7,C129160
