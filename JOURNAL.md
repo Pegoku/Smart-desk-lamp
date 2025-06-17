@@ -3,7 +3,7 @@ title: "Smart Desk Lamp"
 author: "Pegoku"
 description: "An ESP32-C3 based Desktop Light with capacitive touch and Home Assistant Integration"
 created_at: "2025-06-09"
-total_time_spent: "h"
+total_time_spent: "44.5h"
 ---
 
 # June 9th: Mockup
@@ -125,5 +125,25 @@ To start with, I designed the LED part, which is the part that will hold the LED
 What I have so far:
 
 ![alt text](<assets/image copy 10.png>)
+
+While designing the 3d model, I realized the PSU was quite big, so I searched for a smaller one. I added it to the pcb.
+
+![alt text](<assets/image copy 11.png>)
+
+**Total time spent: 5h**
+
+
+# June 17th: Finish the 3d model and BOM
+I had the 3d model almost ready, so I just had to do the base, which was qutie simple. But to make it easier, and stronger, I replaced the original C13 connector with a new THT one, this way I don't need spade connectors to connect it to the PCB.
+
+![alt text](<assets/image copy 12.png>)
+
+I also added a holder for the LED PCB. I'll use 3d printed clips to hold it in place, probably also a bit of hot glue.
+
+Final result: 
+
+![alt text](<assets/image copy 13.png>)
+
+**Total time spent: 6h**
 
 
