@@ -1,4 +1,4 @@
-25937561798778226
+25942812088461915
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -59192,6 +59192,13 @@ NINA_LGA71R_1500X1000X223_PCB
 71
 71
 Extra
+QUALTEK_703W-00_53
+
+
+0
+3
+3
+Extra
 RIGADO_BMD-340-A-R
 
 
@@ -103284,6 +103291,20 @@ POWERPAK-SO-8_L6.2-W5.2-P1.27-BL_POWERPAK
 0
 6
 6
+easyeda2kicad
+PWRM-TH_IRM-20-24
+
+
+0
+4
+4
+easyeda2kicad
+PWRM-TH_L52.0-W27.2_20W-AC-DC
+
+
+0
+4
+4
 easyeda2kicad
 QFN-32_L5.0-W5.0-P0.50-BL-EP3.4
 

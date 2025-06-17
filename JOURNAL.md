@@ -1,7 +1,7 @@
 ---
 title: "Smart Desk Lamp"
 author: "Pegoku"
-description: "An ESP32-C3 based LED controller PCB for Home Assistant."
+description: "An ESP32-C3 based Desktop Light with capacitive touch and Home Assistant Integration"
 created_at: "2025-06-09"
 total_time_spent: "h"
 ---
@@ -123,6 +123,7 @@ Now that I've got all the non-printed items, I started designing the 3d model.
 To start with, I designed the LED part, which is the part that will hold the LEDs and the aluminum PCB. I started with a simple cone, but switched to an octagonal prism with taper angle of 15º, as it was easier to design and looked better.
 
 What I have so far:
+
 ![alt text](<assets/image copy 10.png>)
 
 
