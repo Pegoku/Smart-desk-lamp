@@ -1,6 +1,6 @@
 # Smart Desk Lamp
 
-This is a home assistant controlled desk lamp with capacitive touch buttons, made with ESPHome and ESP32-C3.
+This is a home assistant controlled CWWW desk lamp with capacitive touch buttons, made with ESPHome and ESP32-C3.
 
 ## Why I made it?
 

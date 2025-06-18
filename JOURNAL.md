@@ -9,7 +9,7 @@ total_time_spent: "44.5h"
 # June 9th: Mockup
 To start the project, I wanted to do a mockup of the design.
 I drew the idea I had in mind, which was a simple desk LED light, I also wanted it to have capacitive touch buttons to control the brightness, bc, why not?
-![img](assets/mockup.png)
+![img](assets/mockup.jpg)
 **Total time spent: 2h**
 
 # June 10th: Mockup
