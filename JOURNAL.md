@@ -3,7 +3,7 @@ title: "Smart Desk Lamp"
 author: "Pegoku"
 description: "An ESP32-C3 based Desktop Light with capacitive touch and Home Assistant Integration"
 created_at: "2025-06-09"
-total_time_spent: "44.5h"
+total_time_spent: "38.5h"
 ---
 
 # June 9th: Mockup
