@@ -77,8 +77,8 @@ PS: This configuration is for reference only, The final configuration will be fo
 
 ```yaml
 esphome:
-  name: controlpad
-  friendly_name: ControlPad
+  name: desklight
+  friendly_name: desklight
 
 esp32:
   board: esp32-c3-devkitm-1
@@ -103,13 +103,9 @@ wifi:
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Controlpad Fallback Hotspot"
+    ssid: "desklight Fallback Hotspot"
     password: "wHjqyQOLnaPa"
 
-globals:
-  - id: page_active
-    type: int
-    initial_value: "0"
 
 i2c:
   sda: GPIO6
@@ -117,117 +113,40 @@ i2c:
   frequency: 800kHz
   scan: true
 
+mpr121:
+  id: mpr121_component
+  address: 0x5A
+  touch_debounce: 1
+  release_debounce: 1
+  touch_threshold: 10
+  release_threshold: 7
+
 binary_sensor:
-  - platform: gpio
-    pin:
-      number: GPIO2
-      mode: INPUT_PULLUP
-      inverted: true
-    name: "Button1"
-    on_press:
-      - display.page.show: page1
-      - lambda: |-
-          id(page_active) = 1;
+  - platform: mpr121
+    id: touch_key0
+    channel: 0
+    name: "Touch Key 0"
+    touch_threshold: 12
+    release_threshold: 6
 
-  - platform: gpio
-    pin:
-      number: GPIO4
-      mode: INPUT_PULLUP
-      inverted: true
-    name: "Button2"
-    on_press:
-      - display.page.show: page2
-      - lambda: |-
-          id(page_active) = 2;
+light:
+  - platform: cwww
+    name: "Livingroom Lights"
+    cold_white: WLight
+    warm_white: CLight
+    cold_white_color_temperature: 6500 K
+    warm_white_color_temperature: 2200 K
+    constant_brightness: true
 
-  - platform: gpio
-    pin:
-      number: GPIO21
-      mode: INPUT_PULLUP
-      inverted: true
-    name: "toggle1"
-    on_press:
-      then:
-        - if:
-            condition:
-              lambda: |-
-                return id(page_active) == 1;
-            then:
-              - homeassistant.service:
-                  service: light.toggle
-                  data:
-                    entity_id: light.led_controller_1_light_bar
-
-sensor:
-  - platform: homeassistant
-    name: "Bar Light Brightness"
-    id: led_controller_1_light_bar_brightness
-    entity_id: light.led_controller_1_light_bar
-    attribute: brightness
-    unit_of_measurement: "%"
-    filters:
-      - lambda: |-
-          if (isnan(x)) return 0.0f;
-          return int(x * 100.0f / 255.0f);
-
-  - platform: adc
-    pin: GPIO3
-    name: "potentiometer1"
-    id: potentiometer1
-    attenuation: 12db # allow 0–3.3 V range
-    update_interval: 20ms
-    unit_of_measurement: "%"
-    filters:
-      - sliding_window_moving_average:
-          window_size: 10
-          send_every: 5
-      - lambda: |-
-          if (isnan(x)) return 0.0f;
-          int pot_val = int(x * 100.0f / 2.9f);
-          if (pot_val > 100) pot_val = 100;
-          return pot_val;
-      - delta: 1.0
-
-    on_value:
-      then:
-        - if:
-            condition:
-              lambda: |-
-                return id(page_active) == 1;
-            then:
-              - homeassistant.service:
-                  service: light.turn_on
-                  data:
-                    entity_id: light.led_controller_1_light_bar
-                    brightness_pct: !lambda "return (int)x;"
-
-# SH1106 128×64 over I2C
-display:
-  - platform: ssd1306_i2c
-    model: SH1106 128x64
-    id: display1
-    address: 0x3C
-    rotation: 0
-    update_interval: 100ms
-    pages:
-      - id: page1
-        lambda: |-
-          int val1 = int((id(led_controller_1_light_bar_brightness).state / 100.0f) * 31);
-          if (val1 != 0) {
-            val1 += 1;
-          }
-          it.filled_rectangle(10, 64-val1, 5, 33);
-
-          // it.printf(0, 0, id(font1), "%.0f%%", id(led_controller_1_light_bar_brightness).state);
-      - id: page2
-        lambda: |-
-          it.print(0, 10, id(font1), "This is page 2!");
-          it.filled_rectangle(10, 20, 80, 5);
-
-font:
-  - file: "gfonts://Ubuntu"
-    id: font1
-    size: 20
+output:
+  - platform: ledc
+    id: WLight
+    pin: GPIO4
+    frequency: 1000 Hz
+  - platform: ledc
+    id: CLight
+    pin: GPIO5
+    frequency: 1000 Hz
 
 captive_portal:
 ```
