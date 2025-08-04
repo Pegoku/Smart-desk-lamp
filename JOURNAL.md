@@ -146,4 +146,12 @@ Final result:
 
 **Total time spent: 6h**
 
+# July 30th: Soldering the PCB
+Yesterday I recieved the PCBs, so today I started soldering them. Sadly the solder paste I had was expired and a bit dry, so just added some flux to it and hoped for the best. Soldering worked well enough, I haven't yet tested the board. hope it works.
+
+**Total time spent: 4.5h**
+
+# July 31st: Testing the PCB
+Today I started programming the ESP32, I used PlatformIO. First, I created the project, and configured the platformio.ini file to use the ESP32-C3 board.
+It didn't work, and I didn't know why, but luckily I found, after quite a lot of messing around that the PCB had a design error, GND wasn't connected!!. Luckily I was able to fix it relatively easily. I just scratched the back of the PCB and bridged a GND via to the GND fill. Then, the board uploaded, but the code didn't run, and I found out it was because I had set the wrong board. I used an adafruit one, and i should have used a generic one. After changing the board, it worked!
 
