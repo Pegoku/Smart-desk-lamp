@@ -13,6 +13,10 @@ I made this project as I wanted to learn more about capacitive touch sensors and
 
 ## Images
 
+Final Build:
+
+![alt text](assets/build/PXL_20250804_173254904.jpg)
+
 <details>
   <summary>Case/Assembly</summary>
 
