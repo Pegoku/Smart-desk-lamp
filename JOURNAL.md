@@ -3,7 +3,7 @@ title: "Smart Desk Lamp"
 author: "Pegoku"
 description: "An ESP32-C3 based Desktop Light with capacitive touch and Home Assistant Integration"
 created_at: "2025-06-09"
-total_time_spent: "38.5h"
+total_time_spent: "58h"
 ---
 
 # June 9th: Mockup
@@ -149,9 +149,40 @@ Final result:
 # July 30th: Soldering the PCB
 Yesterday I recieved the PCBs, so today I started soldering them. Sadly the solder paste I had was expired and a bit dry, so just added some flux to it and hoped for the best. Soldering worked well enough, I haven't yet tested the board. hope it works.
 
+PS: I plugged the power cord, and it didn't blow up!!
+
+![alt text](assets/build/PXL_20250729_172057335.MP.jpg)
+
 **Total time spent: 4.5h**
 
 # July 31st: Testing the PCB
 Today I started programming the ESP32, I used PlatformIO. First, I created the project, and configured the platformio.ini file to use the ESP32-C3 board.
 It didn't work, and I didn't know why, but luckily I found, after quite a lot of messing around that the PCB had a design error, GND wasn't connected!!. Luckily I was able to fix it relatively easily. I just scratched the back of the PCB and bridged a GND via to the GND fill. Then, the board uploaded, but the code didn't run, and I found out it was because I had set the wrong board. I used an adafruit one, and i should have used a generic one. After changing the board, it worked!
 
+![alt text](assets/build/PXL_20250731_155633771.jpg)
+
+Now I tried to connect the capacitive touch controller, but it didn't work. It wasn't being detected by the ESP32, so I checked the wiring. I even tried soldering to the QFN pins, but it still didn't work. I ended up giving up, as I didn't find any useful information, as it seems like no one has used this controller with an ESP32 before. I think I'll focus on the LEDs first, and then try to get the capacitive touch working (if I can find a way to do it).
+
+![alt text](assets/build/PXL_20250731_180809447.MP.jpg)
+
+**Total time spent: 6h**
+
+# August 3rd: PCB worked!... for a moment
+Today I soldered the LED PCB. I placed all the LEDs, led drivers, but I found out I hadn't ordered the led driver resistors, so I had to use some 10Ω tht resistors I had lying around. I soldered them, which was hard, and I broke one pad, but I managed to solder them. I also added hot glue to the pcb so the resistors wouldn't fall off and break more pads. Then I tested the LEDs using some voltage, and they worked!
+Now I just had to connect the LED PCB to the main PCB, and code ESPHome to control the LEDs.
+Luckily that was easy. I was able to do it quite quickly, and I was able to control the LEDs using ESPHome. I also added it to my Home Assistant, so I could control it from there. I even got dimming and color temperature working!
+
+![alt text](assets/build/PXL_20250803_175937419.MP.jpg)
+
+Sadly, after a few minutes, the LEDs went full brightness, and the ESP32 stopped responding. I tried resetting it, but it didn't work. Then I used my finger to feel the temperature of the ICs, and the 3.3V buck was burning hot. I had to remove the power, and let it cool down. After a while, I tried again, but with no luck. The ESP32 was fried, and the buck converter was also fried. I think the problem was that the buck wasn't being cooled properly. 
+Luckily the led drivers were fine, and so were the LEDs, so I could just use the light at full brightness.
+
+**Total time spent: 5h**
+
+# August 4th: Assesmbly of the case
+Today, after the disaster yesterday, I decided to assemble the case. I had already printed the parts, so I just had to put them together. Sadly, Aliexpress canceled my order for the flexible tube, so I had to use a regular pvc tube, which I glued with hot glue to the base. I was also unable to use all PCB clips for the LED PCB, as the resistors I used were interfering with the clips, so I just used the top clip which was barely enough to hold the PCB in place. I also added some hot glue, so it wouldn't fall off.
+Also, by accident, it creates a cool octagonal pattern on the wall, which I really like.
+
+![alt text](assets/build/PXL_20250804_173254904.jpg)
+
+**Total time spent: 4h**
